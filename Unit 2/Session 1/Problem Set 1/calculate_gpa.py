@@ -30,4 +30,47 @@ report_card = {"Math": "A",
 print(calculate_gpa(report_card))
 
 Example Output: 3.33
+
+Problem:
+input: dictionary of type {"class":"letter grade"}
+output: float representing the GPA for the report card, 
+        2 places after the decimal point
+
+Grade System as follows:
+"A" = 4
+"B" = 3
+"C" = 2
+"D" = 1
+"F" = 0
+
+Data Structure: Dict for containing conversion of letter grade to number value
+ of type {"letter grade":number in range(5)}
+ 
+Algorithm:
+- create variable for containing the sum of all number grades
+- iterate through the given dictionary
+  - for a given item, convert the letter grade to number grade
+    and add to sum
+- divide sum by the number of grades in dictionary
+- return average rounded to two decimal places
 """
+
+def calculate_gpa(report_card):
+    grade_sum = 0
+    grade_conversion_table = {"A" : 4, "B" : 3, "C" : 2, "D" : 1, "F": 0}
+    
+    for grade in report_card.values():
+        grade_sum += grade_conversion_table[grade]
+    
+    GPA = grade_sum / len(report_card)
+    
+    return "{:.2f}".format(GPA)
+
+report_card = {"Math": "A", 
+               "Science": "C", 
+               "History": "A", 
+               "Art": "B", 
+               "English": "B", 
+               "Spanish": "A"}
+               
+print(calculate_gpa(report_card))
